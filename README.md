@@ -1,4 +1,4 @@
-# Brutalist Blog
+# Syntax Tech Blog
 
 A personal blog built with Next.js 15+, TypeScript, and brutalist design principles. Features a clean admin interface for managing blog posts with full CRUD functionality.
 
