@@ -1,145 +1,132 @@
-# Syntax Tech Blog
+# Brutalist Blog
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
-## Project Overview
-
-Welcome to **Syntax Tech Blog**, a modern personal blog built with a minimalist, brutalist aesthetic. The site is crafted using Next.js (App Router), TypeScript, and styled with Tailwind CSS. The backend leverages Drizzle ORM and Vercel Postgres (Neon) for type-safe data access and a serverless database experience.
-Designed for simplicity, clarity and structure, the blog emphasizes readable content, direct interfaces, and a bold, no-frills presentation.
+A personal blog built with Next.js 15+, TypeScript, and brutalist design principles. Features a clean admin interface for managing blog posts with full CRUD functionality.
 
 ## Features
 
-* Brutalist design style: exposed grids, visible structure, strong typography
-* Full CRUD functionality for blog posts (create, read, update, delete)
-* Admin dashboard protected by cookie-based authentication
-* Markdown support so you can write in Markdown and have it rendered automatically
-* Built for performance with Next.js server components and modern tooling
-* Seamless integration with serverless database (Neon/Postgres) and Drizzle ORM
+- **Brutalist Design**: Raw, structural aesthetic with bold typography and visible borders
+- **Space Grotesk Font**: Geometric brutalist-style typography
+- **Full CRUD**: Create, read, update, and delete blog posts
+- **Admin Dashboard**: Protected admin interface with cookie-based authentication
+- **Markdown Support**: Write posts in markdown with automatic rendering
+- **Database**: Vercel Postgres with Drizzle ORM for type-safe queries
+- **Server Components**: Built with Next.js App Router and React Server Components
 
 ## Tech Stack
 
-* **Framework**: Next.js (App Router)
-* **Language**: TypeScript
-* **Styling**: Tailwind CSS (v4)
-* **Database**: Vercel Postgres (Neon)
-* **ORM**: Drizzle ORM for type-safe queries
-* **Design**: Space Grotesk font + brutalist aesthetic
+- **Next.js 16** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **Tailwind CSS v4** - Utility-first styling
+- **Vercel Postgres (Neon)** - Serverless PostgreSQL database
+- **Drizzle ORM** - Type-safe database queries
+- **Space Grotesk** - Google Font with brutalist aesthetic
 
 ## Getting Started
 
 ### Prerequisites
 
-* Node.js v18 or higher
-* A PostgreSQL database provisioned via Neon or a compatible provider
-* Set up environment variables (see below)
+- Node.js 18+ installed
+- A Neon database (automatically configured in v0)
 
-### Setup Instructions
+### Setup
 
-1. Clone the repository:
+1. **Set Environment Variables**
 
-   ```bash
-   git clone https://github.com/F4P1E/syntax-tech-blog.git
-   cd syntax-tech-blog
-   ```
-2. Create a `.env.local` (or similar) file in the project root and add required variables:
-
-   ```env
-   DATABASE_URL=your_postgres_connection_string
+   The `DATABASE_URL` is automatically configured via Neon integration. You only need to add:
+   \`\`\`env
    ADMIN_PASSWORD=your_secure_password
-   ```
-3. Run database setup script (in `scripts/001-setup-database.sql`) to create the `posts` table and seed initial data.
-4. Install dependencies and start the development server:
+   \`\`\`
+   
+   Add this in the **Vars** section of the v0 in-chat sidebar.
 
-   ```bash
-   pnpm install     # or npm/install as appropriate
-   pnpm dev         # or `npm run dev`
-   ```
-5. Visit `http://localhost:3000` in your browser to view the blog.
+2. **Run Database Setup Script**
+
+   Execute the SQL setup script to create the posts table and seed initial data:
+   - `scripts/001-setup-database.sql` - Creates posts table and seeds initial posts
+
+   In v0, click on the **Scripts** section and run this script directly.
+
+3. **Start Development Server**
+
+   The preview will automatically start in v0. For local development:
+   \`\`\`bash
+   npm run dev
+   \`\`\`
+
+   Open [http://localhost:3000](http://localhost:3000) to view the blog.
 
 ## Usage
 
 ### Public Pages
 
-* `/` — Lists all blog posts
-* `/about` — A page about the blog and technology
-* `/post/[slug]` — Individual blog post pages rendered from markdown
+- **Home** (`/`) - View all blog posts
+- **About** (`/about`) - Learn about the blog and its technology
+- **Post** (`/post/[slug]`) - Read individual blog posts
 
 ### Admin Interface
 
-* Navigate to `/admin/login`
-* Enter the password you set via `ADMIN_PASSWORD`
-* Once authenticated, you can:
+1. Navigate to `/admin/login`
+2. Enter your admin password (set in environment variables)
+3. Access the admin dashboard to:
+   - View all posts
+   - Create new posts
+   - Edit existing posts
+   - Delete posts
 
-  * View all posts
-  * Create a new post
-  * Edit an existing post
-  * Delete a post
+### Writing Posts
 
-### Writing a Post
+Posts support basic markdown formatting:
 
-Posts are written in Markdown with support for headings, lists, **bold text**, etc.
-
-```markdown
-# Heading 1  
-## Heading 2  
-### Heading 3  
-- Item one  
-- Item two  
-```
+- `# Header 1`, `## Header 2`, `### Header 3`
+- `**bold text**`
+- `- list items`
 
 ## Design Philosophy
 
-The site channels brutalist web design principles:
+This blog embraces brutalist web design principles:
 
-* Raw aesthetic: minimal ornamentation, no gloss or smooth transitions
-* Visible structure: clear borders, exposed grids
-* Bold typography: strong headings, high contrast
-* Minimal colour palette: primarily grayscale with a single accent colour
-* Honest presentation: what you see is what you get
+- **Raw aesthetics** - No polished gradients or smooth transitions
+- **Visible structure** - Borders and grids are exposed, not hidden
+- **Bold typography** - Strong, uppercase headings with high contrast
+- **Minimal color palette** - Grayscale with a single red accent
+- **Honest presentation** - What you see is what you get
 
 ## Project Structure
 
-```text
+\`\`\`
 ├── app/
-│   ├── admin/          # Admin dashboard & authentication
-│   ├── post/[slug]/    # Individual blog post pages
+│   ├── admin/          # Admin dashboard and auth
+│   ├── post/[slug]/    # Individual post pages
 │   ├── about/          # About page
-│   └── page.tsx        # Homepage
+│   └── page.tsx        # Home page
 ├── components/         # Reusable React components
 ├── lib/
-│   ├── db/             # Database schema & client
-│   └── auth.ts         # Authentication utilities
-├── scripts/            # SQL setup scripts
-├── styles/             # Global and utility styles
-├── public/             # Static assets
-├── next.config.mjs
-├── drizzle.config.ts
-├── tsconfig.json
-└── package.json
-```
+│   ├── db/            # Database schema and client
+│   └── auth.ts        # Authentication utilities
+└── scripts/           # SQL setup script
+\`\`\`
 
 ## Deployment
 
 This project is optimized for deployment on Vercel:
 
-1. Push the repository to your GitHub account.
-2. Connect the project to Vercel for automatic deployments.
-3. In Vercel dashboard, configure the environment variable `ADMIN_PASSWORD`.
-4. Ensure the database (Neon) or PostgreSQL is connected and `DATABASE_URL` is set if required.
-5. Deploy and the site will be live — edits to main branch trigger automatic builds.
+1. Push your code to GitHub (use the GitHub button in v0)
+2. Deploy directly from v0 using the **Publish** button
+3. Add `ADMIN_PASSWORD` environment variable in Vercel dashboard
+4. The Neon database integration will automatically configure database variables
 
 ## Troubleshooting
 
-**SQL Execution Error**
+### SQL Execution Error
 
-* Make sure the script `scripts/001-setup-database.sql` has been run.
-* Check your database connection string and access permissions.
+If you see a SQL execution error, make sure to:
+1. Run the `scripts/001-setup-database.sql` script from the Scripts section in v0
+2. Verify your Neon database is connected in the Connect section
 
-**Font Loading Issues**
+### Font Loading Issues
 
-* The site uses the Google Font *Space Grotesk*. It is loaded automatically — no need for local font files.
-* If you see fallback fonts instead, verify network access to fonts.googleapis.com.
+The project uses Space Grotesk from Google Fonts, which loads automatically. No additional font files are needed.
 
 ## License
 
-This project is licensed under the MIT License. Feel free to use, modify, and distribute it.
+MIT
