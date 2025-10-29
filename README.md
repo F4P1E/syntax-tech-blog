@@ -1,132 +1,142 @@
-# Brutalist Blog
+# Syntax Tech Blog  
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white)
+![Drizzle ORM](https://img.shields.io/badge/Drizzle%20ORM-0B3B4D?style=for-the-badge&logo=drizzle&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)
 
-A personal blog built with Next.js 15+, TypeScript, and brutalist design principles. Features a clean admin interface for managing blog posts with full CRUD functionality.
+**A personal tech blog with a brutalist aesthetic and modern web stack.**
 
-## Features
+---
 
-- **Brutalist Design**: Raw, structural aesthetic with bold typography and visible borders
-- **Space Grotesk Font**: Geometric brutalist-style typography
-- **Full CRUD**: Create, read, update, and delete blog posts
-- **Admin Dashboard**: Protected admin interface with cookie-based authentication
-- **Markdown Support**: Write posts in markdown with automatic rendering
-- **Database**: Vercel Postgres with Drizzle ORM for type-safe queries
-- **Server Components**: Built with Next.js App Router and React Server Components
+## Overview  
+Syntax Tech Blog is a minimalist, **brutalist-style blogging platform** built with the latest web technologies.  
+It features full CRUD post management, Markdown-based content, and a password-protected admin dashboard — all wrapped in a clean, structural design philosophy.
 
-## Tech Stack
+---
 
-- **Next.js 16** - React framework with App Router
-- **TypeScript** - Type-safe development
-- **Tailwind CSS v4** - Utility-first styling
-- **Vercel Postgres (Neon)** - Serverless PostgreSQL database
-- **Drizzle ORM** - Type-safe database queries
-- **Space Grotesk** - Google Font with brutalist aesthetic
+## Features  
+- **Brutalist Design** — strong typography, visible layout, minimal colour palette  
+- **Markdown Support** — write posts using Markdown syntax  
+- **Admin Dashboard** — create, update, and delete posts securely  
+- **Modern Architecture** — powered by Next.js App Router with server components  
+- **Drizzle ORM + Neon (Vercel Postgres)** — type-safe and serverless database layer  
+- **Tailwind CSS** — utility-first styling for flexible customization  
 
-## Getting Started
+---
 
-### Prerequisites
+## Tech Stack  
+- **Framework:** Next.js 16+  
+- **Language:** TypeScript  
+- **Styling:** Tailwind CSS v4  
+- **Database:** Vercel Postgres (Neon)  
+- **ORM:** Drizzle  
+- **Font:** Space Grotesk  
 
-- Node.js 18+ installed
-- A Neon database (automatically configured in v0)
+---
 
-### Setup
+## Getting Started  
 
-1. **Set Environment Variables**
+### Prerequisites  
+- Node.js ≥ 18  
+- Neon (Vercel Postgres) database  
 
-   The `DATABASE_URL` is automatically configured via Neon integration. You only need to add:
-   \`\`\`env
-   ADMIN_PASSWORD=your_secure_password
-   \`\`\`
-   
-   Add this in the **Vars** section of the v0 in-chat sidebar.
+### Installation  
+```bash
+git clone https://github.com/F4P1E/syntax-tech-blog.git
+cd syntax-tech-blog
+pnpm install
+````
 
-2. **Run Database Setup Script**
+### Environment Variables
 
-   Execute the SQL setup script to create the posts table and seed initial data:
-   - `scripts/001-setup-database.sql` - Creates posts table and seeds initial posts
+Create a `.env.local` file in the root directory:
 
-   In v0, click on the **Scripts** section and run this script directly.
+```env
+ADMIN_PASSWORD=your_secure_password
+DATABASE_URL=your_neon_database_connection_string
+```
 
-3. **Start Development Server**
+### Database Setup
 
-   The preview will automatically start in v0. For local development:
-   \`\`\`bash
-   npm run dev
-   \`\`\`
+```bash
+pnpm run db:setup
+```
 
-   Open [http://localhost:3000](http://localhost:3000) to view the blog.
+### Development
+
+```bash
+pnpm run dev
+```
+
+Then open [http://localhost:3000](http://localhost:3000)
+
+---
+
+## Project Structure
+
+```
+├── app/
+│   ├── admin/          # Admin dashboard
+│   ├── post/[slug]/    # Blog post pages
+│   ├── about/          # About page
+│   └── page.tsx        # Home page
+├── components/         # Reusable components
+├── lib/
+│   ├── db/             # Database schema + config
+│   └── auth.ts         # Authentication utilities
+├── scripts/            # SQL setup scripts
+├── public/             # Static assets
+└── styles/             # Global styles
+```
+
+---
 
 ## Usage
 
 ### Public Pages
 
-- **Home** (`/`) - View all blog posts
-- **About** (`/about`) - Learn about the blog and its technology
-- **Post** (`/post/[slug]`) - Read individual blog posts
+* `/` — Blog index
+* `/about` — About the author
+* `/post/[slug]` — View a blog post
 
-### Admin Interface
+### Admin Panel
 
-1. Navigate to `/admin/login`
-2. Enter your admin password (set in environment variables)
-3. Access the admin dashboard to:
-   - View all posts
-   - Create new posts
-   - Edit existing posts
-   - Delete posts
+1. Visit `/admin/login`
+2. Log in using the `ADMIN_PASSWORD`
+3. Manage posts (create/edit/delete) easily
 
-### Writing Posts
+Markdown syntax is supported for post content.
 
-Posts support basic markdown formatting:
-
-- `# Header 1`, `## Header 2`, `### Header 3`
-- `**bold text**`
-- `- list items`
+---
 
 ## Design Philosophy
 
-This blog embraces brutalist web design principles:
+> Brutalism in web design focuses on honesty and function.
+> This blog intentionally exposes its structure, celebrates strong typography, and avoids ornamental design — resulting in a clean, utilitarian reading experience.
 
-- **Raw aesthetics** - No polished gradients or smooth transitions
-- **Visible structure** - Borders and grids are exposed, not hidden
-- **Bold typography** - Strong, uppercase headings with high contrast
-- **Minimal color palette** - Grayscale with a single red accent
-- **Honest presentation** - What you see is what you get
-
-## Project Structure
-
-\`\`\`
-├── app/
-│   ├── admin/          # Admin dashboard and auth
-│   ├── post/[slug]/    # Individual post pages
-│   ├── about/          # About page
-│   └── page.tsx        # Home page
-├── components/         # Reusable React components
-├── lib/
-│   ├── db/            # Database schema and client
-│   └── auth.ts        # Authentication utilities
-└── scripts/           # SQL setup script
-\`\`\`
+---
 
 ## Deployment
 
-This project is optimized for deployment on Vercel:
+Optimized for [Vercel](https://vercel.com):
 
-1. Push your code to GitHub (use the GitHub button in v0)
-2. Deploy directly from v0 using the **Publish** button
-3. Add `ADMIN_PASSWORD` environment variable in Vercel dashboard
-4. The Neon database integration will automatically configure database variables
+1. Push your repo to GitHub
+2. Import it into Vercel
+3. Add environment variables (`ADMIN_PASSWORD`, `DATABASE_URL`)
+4. Deploy instantly
 
-## Troubleshooting
-
-### SQL Execution Error
-
-If you see a SQL execution error, make sure to:
-1. Run the `scripts/001-setup-database.sql` script from the Scripts section in v0
-2. Verify your Neon database is connected in the Connect section
-
-### Font Loading Issues
-
-The project uses Space Grotesk from Google Fonts, which loads automatically. No additional font files are needed.
+---
 
 ## License
 
-MIT
+Licensed under the [MIT License](./LICENSE).
+
+---
+
+## Author
+
+**Duong Phu Dong (F4P1E)**
+
+* GitHub: [@F4P1E](https://github.com/F4P1E)
