@@ -111,13 +111,6 @@ Markdown syntax is supported for post content.
 
 ---
 
-## Design Philosophy
-
-> Brutalism in web design focuses on honesty and function.
-> This blog intentionally exposes its structure, celebrates strong typography, and avoids ornamental design — resulting in a clean, utilitarian reading experience.
-
----
-
 ## Deployment
 
 Optimized for [Vercel](https://vercel.com):
